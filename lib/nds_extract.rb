@@ -1,5 +1,8 @@
+require "pry"
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require_relative './directors_database'
+
+pp directors_database
 
 def directors_totals(source)
   result = {}
@@ -26,6 +29,14 @@ end
 
 def list_of_directors(source)
   # Write this implementation
+  directors_index = 0
+  directors_list = []
+  while directors_index < source.length do
+    directors_name = source[directors_index][:name]
+    directors_list << directors_name
+    directors_index += 1 
+  end
+return directors_list
 end
 
 def total_gross(source)
@@ -38,6 +49,17 @@ def total_gross(source)
   # Visit each key (i.e. director name), look up the value in the hash
   # returned by directors_totals, and add it to a running total. When done,
   # return the total
+  names = list_of_directors(source)
+  director_money = directors_totals(source)
+  gross = 0 
+  total_index = 0 
+  while total_index < names.length do
+    director_name = names[total_index]
+  #binding.pry
+      gross += director_money[director_name]
+    total_index +=1 
+  end
+  gross
 end
 
 
