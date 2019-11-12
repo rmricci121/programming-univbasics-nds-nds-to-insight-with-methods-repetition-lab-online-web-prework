@@ -55,7 +55,6 @@ def total_gross(source)
   total_index = 0 
   while total_index < names.length do
     director_name = names[total_index]
-  #binding.pry
       gross += director_money[director_name]
     total_index +=1 
   end
